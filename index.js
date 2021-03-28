@@ -31,6 +31,7 @@ client.connect(err => {
             })
     })
 
+
     app.get('/product/:key', (req, res) => {
         productsCollection.find({ key: req.params.key })
             .toArray((error, document) => {
@@ -46,8 +47,13 @@ client.connect(err => {
             })
     })
 
+
+    app.get('/', (req, res) => {
+        res.send('Developer is sleeping.')
+    })
+
 });
 
 
 
-app.listen(port)
+app.listen(process.env.PORT || port)
